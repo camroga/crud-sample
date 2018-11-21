@@ -1,0 +1,22 @@
+os:
+  osx
+language: java
+
+before_install:
+  - brew install gradle
+
+install: true
+jdk:
+  - openjdk8
+
+branches:
+  only:
+    - master
+
+cache:
+  directories:
+  - $HOME/.gradle
+
+script:  
+  - gradle clean
+  - gradle build
