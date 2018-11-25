@@ -4,7 +4,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-@Stateless
+//@Stateless
 public class GenericPersistence {
 
     protected EntityManager entityManager;
@@ -13,7 +13,7 @@ public class GenericPersistence {
         return entityManager;
     }
 
-    @PersistenceContext(unitName = "PostgresDS")
+    //@PersistenceContext(unitName = "PostgresDS")
     public void setEntityManager(EntityManager entityManager) {
         this.entityManager = entityManager;
     }

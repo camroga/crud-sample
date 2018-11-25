@@ -1,112 +1,112 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.crud.sample</groupId>
-  <artifactId>crud-sample-ws</artifactId>
-  <version>1.0</version>
-  <packaging>war</packaging>
-  <name>crud-sample-ws Maven Webapp</name>
-  <url>http://www.example.com</url>
-
-  <parent>
     <groupId>org.crud.sample</groupId>
-    <artifactId>crud-sample</artifactId>
+    <artifactId>crud-sample-ws</artifactId>
     <version>1.0</version>
-  </parent>
+    <packaging>war</packaging>
+    <name>crud-sample-ws Maven Webapp</name>
+    <url>http://www.example.com</url>
 
-  <properties>
-    <failOnMissingWebXml>false</failOnMissingWebXml>
+    <parent>
+        <groupId>org.crud.sample</groupId>
+        <artifactId>crud-sample</artifactId>
+        <version>1.0</version>
+    </parent>
 
-    <version.javaee-api>7.0</version.javaee-api>
-    <version.jboss.bom>10.1.0.Final</version.jboss.bom>
-    <version.jersey-bom>2.19</version.jersey-bom>
-    <version.swagger-jaxrs2>2.0.0-rc1</version.swagger-jaxrs2>
-    <version.wildfly.maven.plugin>1.0.2.Final</version.wildfly.maven.plugin>
-    <version.crud.sample>1.0</version.crud.sample>
-  </properties>
+    <properties>
+        <failOnMissingWebXml>false</failOnMissingWebXml>
 
-  <dependencyManagement>
+        <version.javaee-api>7.0</version.javaee-api>
+        <version.jboss.bom>10.1.0.Final</version.jboss.bom>
+        <version.jersey-bom>2.19</version.jersey-bom>
+        <version.swagger-jaxrs2>2.0.0-rc1</version.swagger-jaxrs2>
+        <version.wildfly.maven.plugin>1.0.2.Final</version.wildfly.maven.plugin>
+        <version.crud.sample>1.0</version.crud.sample>
+    </properties>
+
+    <dependencyManagement>
+
+        <dependencies>
+
+            <!-- Wildfly Management -->
+            <dependency>
+                <groupId>org.wildfly.bom</groupId>
+                <artifactId>wildfly-javaee7-with-tools</artifactId>
+                <version>${version.jboss.bom}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Jersey Management -->
+            <dependency>
+                <groupId>org.glassfish.jersey</groupId>
+                <artifactId>jersey-bom</artifactId>
+                <version>${version.jersey-bom}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+        </dependencies>
+
+    </dependencyManagement>
 
     <dependencies>
 
-      <!-- Wildfly Management -->
-      <dependency>
-        <groupId>org.wildfly.bom</groupId>
-        <artifactId>wildfly-javaee7-with-tools</artifactId>
-        <version>${version.jboss.bom}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
+        <!-- Jersey -->
+        <dependency>
+            <groupId>org.glassfish.jersey.containers</groupId>
+            <artifactId>jersey-container-servlet-core</artifactId>
+        </dependency>
 
-      <!-- Jersey Management -->
-      <dependency>
-        <groupId>org.glassfish.jersey</groupId>
-        <artifactId>jersey-bom</artifactId>
-        <version>${version.jersey-bom}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
+        <!-- Swagger -->
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-jaxrs2</artifactId>
+            <version>${version.swagger-jaxrs2}</version>
+        </dependency>
+
+        <!-- crud-sample-service-->
+        <dependency>
+            <groupId>org.crud.sample</groupId>
+            <artifactId>crud-sample-service</artifactId>
+            <version>${version.crud.sample}</version>
+        </dependency>
 
     </dependencies>
 
-  </dependencyManagement>
+    <!-- Used wildfly plugin -->
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <plugins>
 
-  <dependencies>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
 
-    <!-- Jersey -->
-    <dependency>
-      <groupId>org.glassfish.jersey.containers</groupId>
-      <artifactId>jersey-container-servlet-core</artifactId>
-    </dependency>
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.1.1</version>
+                <configuration>
+                    <!-- Java EE 6 doesn't require t.xml, Maven needs to catch up! -->
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
 
-    <!-- Swagger -->
-    <dependency>
-      <groupId>io.swagger</groupId>
-      <artifactId>swagger-jaxrs2</artifactId>
-      <version>${version.swagger-jaxrs2}</version>
-    </dependency>
+            <plugin>
+                <groupId>org.wildfly.plugins</groupId>
+                <artifactId>wildfly-maven-plugin</artifactId>
+                <version>${version.wildfly.maven.plugin}</version>
+            </plugin>
 
-    <!-- crud-sample-service-->
-    <dependency>
-      <groupId>org.crud.sample</groupId>
-      <artifactId>crud-sample-service</artifactId>
-      <version>${version.crud.sample}</version>
-    </dependency>
-
-  </dependencies>
-
-  <!-- Used wildfly plugin -->
-  <build>
-    <finalName>${project.artifactId}</finalName>
-    <plugins>
-
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>2.3.1</version>
-        <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
-        </configuration>
-      </plugin>
-
-      <plugin>
-        <artifactId>maven-war-plugin</artifactId>
-        <version>2.1.1</version>
-        <configuration>
-          <!-- Java EE 6 doesn't require t.xml, Maven needs to catch up! -->
-          <failOnMissingWebXml>false</failOnMissingWebXml>
-        </configuration>
-      </plugin>
-
-      <plugin>
-        <groupId>org.wildfly.plugins</groupId>
-        <artifactId>wildfly-maven-plugin</artifactId>
-        <version>${version.wildfly.maven.plugin}</version>
-      </plugin>
-
-    </plugins>
-  </build>
+        </plugins>
+    </build>
 </project>

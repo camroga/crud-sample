@@ -1,7 +1,7 @@
 package dao;
 
 
-        import entity.Location;
+import entity.Location;
 
 public interface LocationDao {
 

@@ -5,22 +5,22 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "customer", schema = "master")
+//@Entity
+//@Table(name = "customer", schema = "master")
 public class Location {
 
-    @Id
-    @Column(name = "customerId")
+    //@Id
+    //@Column(name = "customerId")
     private String customerId;
 
-    @Column(name = "postCode")
+    //@Column(name = "postCode")
     private String postCode;
 
-    @Id
-    @Column(name = "streetAddress")
+    //@Id
+    //@Column(name = "streetAddress")
     private String streetAddress;
 
-    @Column(name = "city")
+    //@Column(name = "city")
     private String city;
 
     public String getCustomerId() {

@@ -5,22 +5,26 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "customer", schema = "master")
+//@Entity
+//@Table(name = "customer", schema = "master")
 public class Customer {
 
-    @Id
-    @Column(name = "id")
+    //@Id
+    //@Column(name = "id")
     private String id;
 
-    @Column(name = "firstName")
+    //@Column(name = "firstName")
     private String firstName;
 
-    @Column(name = "surname")
+    //@Column(name = "surname")
     private String surname;
 
     public String getFirstName() {
         return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getId() {
@@ -29,10 +33,6 @@ public class Customer {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
     }
 
     public String getSurname() {
