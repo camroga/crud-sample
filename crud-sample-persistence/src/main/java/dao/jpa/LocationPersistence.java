@@ -15,15 +15,15 @@ public class LocationPersistence implements LocationDao {
     @Override
     public Location getLocation(String customerId) {
         Location location = new Location();
-        String SQL = "SELECT crud.location.* FROM crud.location, crud.customer " +
-                "WHERE " + customerId + " = crud.customer.id";
+        String SQL = "SELECT * FROM crud.location " +
+                "WHERE " + customerId + " = crud.location.customerid";
 
         try (Connection conn = PostgresJdbc.getConnection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(SQL)) {
 
             while(rs.next()) {
-                location.setCustomerId(rs.getString("customerId"));
+                location.setCustomerId(rs.getString("customerid"));
                 location.setCity(rs.getString("city"));
                 location.setPostCode(rs.getString("postCode"));
                 location.setStreetAddress(rs.getString("streetAddress"));

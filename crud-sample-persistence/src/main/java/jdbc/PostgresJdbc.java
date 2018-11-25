@@ -40,7 +40,11 @@ public class PostgresJdbc {
 
         try {
             connection = DriverManager.getConnection(
-                    PropertyDB.getProperty("url"),
+                    "jdbc:postgresql://" +
+                            PropertyDB.getProperty("url") + ":" +
+                            PropertyDB.getProperty("port") + "/" +
+                            PropertyDB.getProperty("db") + "?currentSchema=" +
+                            PropertyDB.getProperty("schema"),
                     PropertyDB.getProperty("user"),
                     PropertyDB.getProperty("password"));
 
