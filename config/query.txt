@@ -60,9 +60,9 @@ CREATE TABLE crud.location
     city text NOT NULL,
     "streetAddress" text NOT NULL,
     "postCode" text NOT NULL,
-    "customerId" bigserial NOT NULL,
+    customerid bigserial NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY ("customerId")
+    FOREIGN KEY ("customerid")
         REFERENCES crud.customer (id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
@@ -75,7 +75,7 @@ ALTER TABLE crud.location
     OWNER to postgres;
 
 INSERT INTO crud.location(
-	id, "streetAddress", city, "postCode", "customerId")
+	id, "streetAddress", city, "postCode", "customerid")
 	VALUES (1,'82 Grey Street','PLANTATIONS','6701',1),
 	(2,'67 Passage Avenue','THURSDAY ISLAND','4875',2),
 	(3,'98 Daly Terrace','CARABOODA','6033',3),
