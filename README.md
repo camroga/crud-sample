@@ -46,7 +46,7 @@ Customer is a table which contain the following data:
 
 Location is a table which have a relation with customer and contain the following data:
 
-| id | streetAddress | city | postCode | customerId |
+| id | streetAddress | city | postCode | customerid |
 |----|-------------------|-----------------|----------|------------|
 | 1 | 82 Grey Street | PLANTATIONS | 6701 | 1 |
 | 2 | 67 Passage Avenue | THURSDAY ISLAND | 4875 | 2 |
