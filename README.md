@@ -11,10 +11,10 @@ Requirements
 Quick Start
 -----------
 
-To run crud-sample, you must have created the customer and location tables. For this, the file [query](https://github.com/camroga/crud-sample/tree/master/config)  is available which contains the necessary queries to be able to consume the web service correctamente.
+To run crud-sample, you must have created the customer and location tables. For this, the file [query](https://github.com/camroga/crud-sample/blob/master/config/query.txt)  is available which contains the necessary queries to be able to consume the web service correctamente.
 
 In the path [config](https://github.com/camroga/crud-sample/blob/master/crud-sample-persistence/src/main/resources/config.properties) you can modify the access data to the database if necessary.
-The war file is generated in the path [war](https://github.com/camroga/crud-sample/blob/master/crud-sample-persistence/src/main/resources/crud-sample-ws.war). This will have the configuration described in the repository. 
+The war file is generated in the path [war](https://github.com/camroga/crud-sample/blob/master/config/crud-sample-ws.war). This will have the configuration described in the repository. 
 
 
 Building
