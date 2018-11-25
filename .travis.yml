@@ -3,7 +3,7 @@ os:
 language: java
 
 before_install:
-  - brew install gradle
+  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 
 install: true
 jdk:
@@ -15,8 +15,8 @@ branches:
 
 cache:
   directories:
-  - $HOME/.gradle
+  - $HOME/.cache
 
 script:  
-  - gradle clean
-  - gradle build
+  - mvn clean
+  - mvn install

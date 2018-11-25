@@ -1,22 +1,11 @@
 package entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-//@Entity
-//@Table(name = "customer", schema = "master")
 public class Customer {
 
-    //@Id
-    //@Column(name = "id")
     private String id;
 
-    //@Column(name = "firstName")
     private String firstName;
 
-    //@Column(name = "surname")
     private String surname;
 
     public String getFirstName() {

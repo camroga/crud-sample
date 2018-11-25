@@ -1,8 +1,12 @@
 package service;
 
+import dto.CustomerDto;
+
+import java.util.List;
+
 public interface Customer {
 
     String getData();
 
-    String find();
+    List<CustomerDto> find();
 }

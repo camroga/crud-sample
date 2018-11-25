@@ -1,26 +1,13 @@
 package entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-//@Entity
-//@Table(name = "customer", schema = "master")
 public class Location {
 
-    //@Id
-    //@Column(name = "customerId")
     private String customerId;
 
-    //@Column(name = "postCode")
     private String postCode;
 
-    //@Id
-    //@Column(name = "streetAddress")
     private String streetAddress;
 
-    //@Column(name = "city")
     private String city;
 
     public String getCustomerId() {

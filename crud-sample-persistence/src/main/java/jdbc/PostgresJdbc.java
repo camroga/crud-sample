@@ -5,8 +5,12 @@ import exception.DaoException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class PostgresqlJDBC {
+public class PostgresJdbc {
+
+    private static final Logger LOGGER = Logger.getLogger(PostgresJdbc.class.getName());
 
     public static Connection getConnection() {
 
@@ -26,9 +30,9 @@ public class PostgresqlJDBC {
         }
 
         if (connection != null) {
-            System.out.println("You made it, take control your database now!");
+            LOGGER.log(Level.FINE, "You made it, take control your database now!");
         } else {
-            System.out.println("Failed to make connection!");
+            LOGGER.log(Level.SEVERE, "Failed to make connection!");
         }
 
         return connection;
