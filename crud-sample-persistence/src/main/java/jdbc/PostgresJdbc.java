@@ -12,7 +12,25 @@ public class PostgresJdbc {
 
     private static final Logger LOGGER = Logger.getLogger(PostgresJdbc.class.getName());
 
+    private static PostgresJdbc postgresJdbc = null;
+
     public static Connection getConnection() {
+        if (postgresJdbc != null) {
+            return postgresJdbc.getInstance();
+        } else {
+            try {
+                PropertyDB.init();
+                postgresJdbc = new PostgresJdbc();
+                return postgresJdbc.getConnection();
+            } catch (Exception e) {
+                throw new DaoException(e.getMessage());
+            }
+        }
+    }
+
+    public Connection getInstance() {
+
+        Connection connection;
 
         try {
             Class.forName("org.postgresql.Driver");
@@ -20,11 +38,12 @@ public class PostgresJdbc {
             throw new DaoException(e);
         }
 
-        Connection connection;
-
         try {
             connection = DriverManager.getConnection(
-                    "jdbc:postgresql://127.0.0.1:5432/postgres?currentSchema=crud", "postgres", "postgres");
+                    PropertyDB.getProperty("url"),
+                    PropertyDB.getProperty("user"),
+                    PropertyDB.getProperty("password"));
+
         } catch (SQLException e) {
             throw new DaoException(e);
         }
