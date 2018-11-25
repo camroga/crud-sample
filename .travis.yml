@@ -15,8 +15,8 @@ branches:
 
 cache:
   directories:
-  - $HOME/.cache
+    - $HOME/.cache
 
-script:  
+script:
   - mvn clean
   - mvn install

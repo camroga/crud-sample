@@ -5,6 +5,7 @@ import entity.Customer;
 import exception.DaoException;
 import jdbc.PostgresJdbc;
 
+import javax.ejb.Stateless;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,6 +13,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+@Stateless
 public class CustomerPersistence implements CustomerDao {
 
     @Override
@@ -22,7 +24,7 @@ public class CustomerPersistence implements CustomerDao {
         try (Connection conn = PostgresJdbc.getConnection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(SQL)) {
-            while(rs.next()) {
+            while (rs.next()) {
                 Customer customer = new Customer();
                 customer.setId(rs.getString("id"));
                 customer.setFirstName(rs.getString("firstName"));

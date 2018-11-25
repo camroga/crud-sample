@@ -5,11 +5,13 @@ import entity.Location;
 import exception.DaoException;
 import jdbc.PostgresJdbc;
 
+import javax.ejb.Stateless;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+@Stateless
 public class LocationPersistence implements LocationDao {
 
     @Override
@@ -22,7 +24,7 @@ public class LocationPersistence implements LocationDao {
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(SQL)) {
 
-            while(rs.next()) {
+            while (rs.next()) {
                 location.setCustomerId(rs.getString("customerid"));
                 location.setCity(rs.getString("city"));
                 location.setPostCode(rs.getString("postCode"));
