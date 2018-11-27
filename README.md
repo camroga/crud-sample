@@ -33,8 +33,8 @@ Once the `war` is deployed on the server, this `API` is available in the followi
 
 - [Get Customer](http://localhost:8080/customer/get)
 
-Example Table
--------
+Table Example
+-------------
 
 Customer is a table which contain the following data:
 
